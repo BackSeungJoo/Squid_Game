@@ -34,8 +34,7 @@ namespace Squid_Game
             int roundWin = 0;
             int player_Win_Count = 0;
             int enemy_Win_Count = 0;
-
-            // 변수 선언 end
+                // 변수 선언 end
 
             // 타이틀씬 출력
             titleScene.Print_TitleScene();
@@ -55,25 +54,41 @@ namespace Squid_Game
                     select_Game = Console.ReadKey(true).Key;
 
                     #region
+                    // 게임 1. 딱지치기 시작
                     if (select_Game == ConsoleKey.D1)
                     {
                         game1.PlayGame_1(ref player_Win_Count, ref enemy_Win_Count);
                         isgame = false;
+
+                        // 플레이어가 최종 승리했다면 라운드 승리 1 추가
                         if (player_Win_Count >= 5)
                         {
                             if (roundWin < 1)
                             {
                                 roundWin = 1;
+                                player_Win_Count = 0;
+                                enemy_Win_Count = 0;
                             }
                         }
                         else { /*pass*/}
-
-                        
                     }
 
+                    // 게임 2. 무궁화 꽃이 피었습니다 시작
                     else if (select_Game == ConsoleKey.D2)
                     {
-                        game2.PlayGame_2();
+                        game2.PlayGame_2(ref player_Win_Count);
+                        isgame = false;
+
+                        if (roundWin == 1)
+                        {
+                            if (player_Win_Count == 1)
+                            {
+                                roundWin = 2;
+                                player_Win_Count = 0;
+                            }
+                            else { /*pass*/ }
+                        }
+                        else { /*pass*/ }
                     }
 
                     else if (select_Game == ConsoleKey.D3)
@@ -425,6 +440,7 @@ namespace Squid_Game
             {
                 for (int x = 0; x < sceneEndLine_X; x++)
                 {
+                    // 1 라운드 클리어
                     if (roundWin == 1)
                     {
                         if ((8 == x) && (y == 18))
@@ -434,6 +450,33 @@ namespace Squid_Game
 
                         // 게임 종류 출력 (1번 게임)
                         if (((8 <= y) && (y <= 13)) && ((20 <= x) && (x <= 25)))
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write(sceneArray[y, x]);
+                            Console.ResetColor();
+                            continue;
+                        }
+                    }
+
+                    // 2라운드 클리어
+                    if (roundWin == 2)
+                    {
+                        if ((8 == x) && (y == 18))
+                        {
+                            sceneArray[y, x] = roundWin.ToString() + " ";
+                        }
+
+                        // 게임 종류 출력 (1번 게임)
+                        if (((8 <= y) && (y <= 13)) && ((20 <= x) && (x <= 25)))
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write(sceneArray[y, x]);
+                            Console.ResetColor();
+                            continue;
+                        }
+
+                        // 게임 종류 출력 (2번 게임)
+                        if (((8 <= y) && (y <= 13)) && ((27 <= x) && (x <= 32)))
                         {
                             Console.ForegroundColor = ConsoleColor.Green;
                             Console.Write(sceneArray[y, x]);
