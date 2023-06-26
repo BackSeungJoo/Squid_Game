@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{62DE13B2-EA3C-4806-B929-38E06EBD8A74}</ProjectGuid>
+    <ProjectGuid>{141FAA59-85DF-41A2-B6C0-BF7CDB54E64C}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Squid_Game</RootNamespace>
     <AssemblyName>Squid_Game</AssemblyName>
@@ -43,8 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Game8.cs" />
+    <Compile Include="Game7.cs" />
+    <Compile Include="Game6.cs" />
+    <Compile Include="Game5.cs" />
+    <Compile Include="Game4.cs" />
+    <Compile Include="Game3.cs" />
+    <Compile Include="Game2.cs" />
+    <Compile Include="Game1.cs" />
+    <Compile Include="MainScene.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TitleScene.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
