@@ -31,7 +31,8 @@ namespace Squid_Game
 
             ConsoleKey select_Game = default;
             bool isgame = true;
-            int roundWin = 0;
+            // 승리 라운드 체크
+            int roundWin = 0;       
             int player_Win_Count = 0;
             int enemy_Win_Count = 0;
                 // 변수 선언 end
@@ -109,9 +110,22 @@ namespace Squid_Game
                         else { /*pass*/ }
                     }
 
+                    // 게임 4. 밤에 생존하기
                     else if (select_Game == ConsoleKey.D4)
                     {
-                        game4.PlayGame_4();
+                        game4.PlayGame_4(ref player_Win_Count);
+                        isgame = false;
+
+                        if (roundWin == 3)
+                        {
+                            if (player_Win_Count == 1)
+                            {
+                                roundWin = 4;
+                                player_Win_Count = 0;
+                            }
+                            else { /*pass*/ }
+                        }
+                        else { /*pass*/ }
                     }
 
                     else if (select_Game == ConsoleKey.D5)
@@ -499,7 +513,6 @@ namespace Squid_Game
                     }
 
                     // 3라운드 클리어
-                    // 2라운드 클리어
                     if (roundWin == 3)
                     {
                         if ((8 == x) && (y == 18))
@@ -527,6 +540,51 @@ namespace Squid_Game
 
                         // 게임 종류 출력 (3번 게임)
                         if (((8 <= y) && (y <= 13)) && ((34 <= x) && (x <= 39)))
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write(sceneArray[y, x]);
+                            Console.ResetColor();
+                            continue;
+                        }
+                    }
+
+                    // 4라운드 클리어
+                    if (roundWin == 4)
+                    {
+                        if ((8 == x) && (y == 18))
+                        {
+                            sceneArray[y, x] = roundWin.ToString() + " ";
+                        }
+
+                        // 게임 종류 출력 (1번 게임)
+                        if (((8 <= y) && (y <= 13)) && ((20 <= x) && (x <= 25)))
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write(sceneArray[y, x]);
+                            Console.ResetColor();
+                            continue;
+                        }
+
+                        // 게임 종류 출력 (2번 게임)
+                        if (((8 <= y) && (y <= 13)) && ((27 <= x) && (x <= 32)))
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write(sceneArray[y, x]);
+                            Console.ResetColor();
+                            continue;
+                        }
+
+                        // 게임 종류 출력 (3번 게임)
+                        if (((8 <= y) && (y <= 13)) && ((34 <= x) && (x <= 39)))
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write(sceneArray[y, x]);
+                            Console.ResetColor();
+                            continue;
+                        }
+
+                        // 게임 종류 출력 (4번 게임)
+                        if (((8 <= y) && (y <= 13)) && ((41 <= x) && (x <= 46)))
                         {
                             Console.ForegroundColor = ConsoleColor.Green;
                             Console.Write(sceneArray[y, x]);
