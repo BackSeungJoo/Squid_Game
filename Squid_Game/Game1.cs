@@ -49,7 +49,7 @@ namespace Squid_Game
                 Console.WriteLine("플레이어가 이긴 횟수 [{0}]\t    [{1}] 상대방이 이긴 횟수", player_Win_Count, enemy_Win_Count);
 
                 Console.SetCursorPosition(0, 6);
-                Ptr_Map_Game2(game1_Map, sceneEndLine_Y, sceneEndLine_X);
+                Ptr_Map_Game1(game1_Map, sceneEndLine_Y, sceneEndLine_X);
                 Action_Game1(ref game1_Map, ref player_Win_Count, ref enemy_Win_Count, sceneEndLine_Y, sceneEndLine_X);
 
                 if((player_Win_Count >= 5) || (enemy_Win_Count >= 5))
@@ -157,7 +157,7 @@ namespace Squid_Game
         }
 
         // 게임 맵 출력
-        public void Ptr_Map_Game2(string[,] game1_Map, int sceneEndLine_Y, int sceneEndLine_X)
+        public void Ptr_Map_Game1(string[,] game1_Map, int sceneEndLine_Y, int sceneEndLine_X)
         {
             for (int y = 0; y < sceneEndLine_Y; y++)
             {
@@ -213,7 +213,7 @@ namespace Squid_Game
 
             // 딱지 숫자 출력하기
             Console.SetCursorPosition(0, 6);
-            Ptr_Map_Game2(game1_Map, sceneEndLine_Y, sceneEndLine_X);
+            Ptr_Map_Game1(game1_Map, sceneEndLine_Y, sceneEndLine_X);
 
             // 플레이어 승리
             if (enemyNum_ < playerNum_)
