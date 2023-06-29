@@ -64,7 +64,7 @@ namespace Squid_Game
             Set_Player(ref game_Map7, ref player_PosY, ref player_PosX, sceneEndLine_Y, sceneEndLine_X);
 
             // 맵 출력
-            Print_Map_Game6(game_Map7, sceneEndLine_Y, sceneEndLine_X);
+            Print_Map_Game7(game_Map7, sceneEndLine_Y, sceneEndLine_X);
 
                 // } 초기 맵 생성 end
 
@@ -74,14 +74,14 @@ namespace Squid_Game
                 // 맵 출력
                 Console.CursorVisible = false;
                 Console.SetCursorPosition(0, 0);
-                Print_Map_Game6(game_Map7, sceneEndLine_Y, sceneEndLine_X);
+                Print_Map_Game7(game_Map7, sceneEndLine_Y, sceneEndLine_X);
                 Rule_Text(glass_Check_False);
 
                 // 플레이어 액션
                 Player_Action(ref game_Map7, ref player_PosY, ref player_PosX, glass_Up, glass_Down, sceneEndLine_Y, sceneEndLine_X, ref glass_Check_False);
 
                 // 승리 실패 판별
-                Win_Lose(ref is_Game, ref player_Win_Count, player_PosX, glass_Check_False);
+                Win_Lose(ref is_Game, ref player_Win_Count, player_PosX, glass_Check_False, ref game_Map7, sceneEndLine_Y, sceneEndLine_X);
             }
 
             Console.Clear();
@@ -193,7 +193,7 @@ namespace Squid_Game
         }
 
         // 맵 출력
-        public void Print_Map_Game6(string[,] game_Map7, int sceneEndLine_Y, int sceneEndLine_X)
+        public void Print_Map_Game7(string[,] game_Map7, int sceneEndLine_Y, int sceneEndLine_X)
         {
             for (int y = 0; y < sceneEndLine_Y; y++)
             {
@@ -779,11 +779,13 @@ namespace Squid_Game
         }
 
         // 승리 패배 판별
-        public void Win_Lose(ref bool is_Game, ref int player_Win_Count, int player_PosX, int glass_Check_False)
+        public void Win_Lose(ref bool is_Game, ref int player_Win_Count, int player_PosX, int glass_Check_False, ref string[,] game_Map7, int sceneEndLine_Y, int sceneEndLine_X)
         {
             // 패배
-            if(glass_Check_False >= 3)
+            if(glass_Check_False >= 4)
             {
+                Console.SetCursorPosition(0, 0);
+                Print_Map_Game7(game_Map7, sceneEndLine_Y, sceneEndLine_X);
                 Clear_Text();
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.SetCursorPosition(70, 5);
@@ -803,6 +805,8 @@ namespace Squid_Game
             // 승리
             if(player_PosX >= 21)
             {
+                Console.SetCursorPosition(0, 0);
+                Print_Map_Game7(game_Map7, sceneEndLine_Y, sceneEndLine_X);
                 Clear_Text();
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.SetCursorPosition(70, 5);
@@ -829,7 +833,7 @@ namespace Squid_Game
             Console.SetCursorPosition(58, 4);
             Console.WriteLine("일반유리를 피해 강화유리를 밟고 끝까지 건너가세요");
             Console.SetCursorPosition(58, 5);
-            Console.WriteLine("3번 떨어지면 라운드 탈락입니다.");
+            Console.WriteLine("4번 떨어지면 라운드 탈락입니다.");
 
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.SetCursorPosition(58, 8);

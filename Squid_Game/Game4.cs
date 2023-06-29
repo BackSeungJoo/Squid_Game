@@ -44,7 +44,7 @@ namespace Squid_Game
                 Console.CursorVisible = false;
                 Console.SetCursorPosition(51, 2);
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("적에게 붙잡히지 않고 200번 이동하세요!!");
+                Console.WriteLine("적에게 붙잡히지 않고 100번 이동하세요!!");
                 Console.SetCursorPosition(51, 4);
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("현재 움직인 횟수 [{0:D2}]", moveCount);
@@ -74,7 +74,7 @@ namespace Squid_Game
                     }
                 }
 
-                if(moveCount >= 200)
+                if(moveCount >= 100)
                 {
                     Console.Clear();
                     player_Win_Count = 1;

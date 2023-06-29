@@ -52,7 +52,7 @@ namespace Squid_Game
                 Ptr_Map_Game1(game1_Map, sceneEndLine_Y, sceneEndLine_X);
                 Action_Game1(ref game1_Map, ref player_Win_Count, ref enemy_Win_Count, sceneEndLine_Y, sceneEndLine_X);
 
-                if((player_Win_Count >= 5) || (enemy_Win_Count >= 5))
+                if ((player_Win_Count >= 5) || (enemy_Win_Count >= 5))
                 {
                     if(player_Win_Count >= 5)
                     {

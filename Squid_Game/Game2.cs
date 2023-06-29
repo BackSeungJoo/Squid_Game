@@ -112,7 +112,6 @@ namespace Squid_Game
             }
         }   // 게임 맵 세팅 end
 
-
         // 보스 영희 세팅
         static public void Set_Boss_State(ref string[,] game2_map, int sceneEndLine_Y, int sceneEndLine_X, int User_Position_Y, int User_Position_X, int noMove_Count)
         {

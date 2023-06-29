@@ -141,8 +141,8 @@ namespace Squid_Game
                 // 턴 횟수 증가
                 turn_Count++;
 
-                // 만약에 턴 횟수가 7 이상이라면 올인 대전
-                if(turn_Count >= 7)
+                // 만약에 턴 횟수가 5 이상이라면 올인 대전
+                if(turn_Count >= 5)
                 {
                     // 턴 종료 후 출력된 문자 지우기
                     Clear_Message();
@@ -530,7 +530,7 @@ namespace Squid_Game
             // 상대방이 구슬을 몇개 숨길건지
             Console.ForegroundColor = ConsoleColor.Red;
             Console.SetCursorPosition(70, 2);
-            Console.WriteLine("7턴 이상이 되어서 올인 턴 시작합니다.");
+            Console.WriteLine("5턴 이상이 되어서 올인 턴 시작합니다.");
             Console.ResetColor();
 
             Console.SetCursorPosition(72, 5);
