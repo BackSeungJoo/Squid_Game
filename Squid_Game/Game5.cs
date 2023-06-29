@@ -44,32 +44,26 @@ namespace Squid_Game
 
                 // 규칙 설명
                 Console.SetCursorPosition(0, 0);
-                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("[ 줄다리기 게임 ]에 오신 것을 환영합니다.");
                 Console.SetCursorPosition(55, 2);
-                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("<  규칙  >");
-                Console.ResetColor();
                 Console.SetCursorPosition(55, 4);
                 Console.Write("숫자1 을 누르면  ");
-                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write("[ W A S D X ]");
                 Console.ResetColor();
-                Console.Write("의 무작위의 5개의 글자가 등장합니다");
+                Console.Write("가 랜덤하게 5개 등장합니다");
                 Console.SetCursorPosition(55, 6);
-                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("무작위 5개의 글자는 1초 후에 사라집니다. 순서를 기억하세요!!");
                 Console.ResetColor();
                 Console.SetCursorPosition(55, 8);
                 Console.WriteLine("글자가 사라진 뒤 ,,,");
                 Console.SetCursorPosition(55, 10);
-                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("맞춘다면 참가자의 팀 쪽으로 줄을 잡아당깁니다.");
                 Console.SetCursorPosition(55, 11);
-                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("틀린다면 참가자의 적 팀 쪽으로 줄을 잡아당깁니다.");
                 Console.SetCursorPosition(55, 14);
-                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("줄을 끝까지 당기면 승리합니다!");
 
                 Console.SetCursorPosition(38, 18);
@@ -353,7 +347,7 @@ namespace Squid_Game
                 for (int i = 3; i > 0; i--)
                 {
                     Console.SetCursorPosition(54, 20);
-                    Thread.Sleep(750);
+                    Thread.Sleep(250);
                     Console.Write("{0}", i);
                 }
 
@@ -371,7 +365,7 @@ namespace Squid_Game
                 for (int i = 3; i > 0; i--)
                 {
                     Console.SetCursorPosition(54, 21);
-                    Thread.Sleep(500);
+                    Thread.Sleep(250);
                     Console.Write("{0}.", i);
                 }
 

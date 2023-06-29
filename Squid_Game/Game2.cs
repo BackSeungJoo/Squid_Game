@@ -193,7 +193,7 @@ namespace Squid_Game
                     // 벽 색상 변경
                     if (game2_map[y, x] == "■")
                     {
-                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ForegroundColor = ConsoleColor.Blue;
                         Console.Write(game2_map[y, x]);
                         Console.ResetColor();
                         continue;
@@ -238,7 +238,7 @@ namespace Squid_Game
                     // 미로 색상 변경
                     if(game2_map[y, x] == "▣")
                     {
-                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.ForegroundColor = ConsoleColor.White;
                         Console.Write(game2_map[y, x]);
                         Console.ResetColor();
                         continue;
@@ -450,9 +450,13 @@ namespace Squid_Game
             Clear();
             is_game = false;
             ForegroundColor = ConsoleColor.Red;
+            Console.SetCursorPosition(50, 8);
             WriteLine("펑!");
+            Console.SetCursorPosition(36, 10);
             WriteLine("당신은 대기시간에 움직였습니다.");
+            Console.SetCursorPosition(34, 12);
             WriteLine("영희의 레이저에 맞아 폭발했습니다.\n");
+            Console.SetCursorPosition(32, 14);
             WriteLine("아무키나 눌러 메인 대기실로 돌아가세요.");
             ResetColor();
             ReadKey();
@@ -465,9 +469,13 @@ namespace Squid_Game
             is_game = false;
             player_Win_Count = 1;
             ForegroundColor = ConsoleColor.Green;
+            Console.SetCursorPosition(46, 8);
             WriteLine("!!!!!!!!");
+            Console.SetCursorPosition(40, 10);
             WriteLine("당신은 살아남았습니다.");
+            Console.SetCursorPosition(34, 12);
             WriteLine("축하합니다. 2 라운드 클리어입니다.\n");
+            Console.SetCursorPosition(32, 14);
             WriteLine("아무키나 눌러 메인 대기실로 돌아가세요.");
             ResetColor();
             ReadKey();

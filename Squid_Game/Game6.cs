@@ -83,7 +83,7 @@ namespace Squid_Game
                 //3,2,1 딜레이
                 for (int i = 3; i > 0; i--)
                 {
-                    Thread.Sleep(1000);
+                    Thread.Sleep(250);
                     Console.SetCursorPosition(90, 12);
                     Console.Write("{0}", i);
                 }
@@ -248,7 +248,7 @@ namespace Squid_Game
             player_bead = player_bead - temp_bead;
 
 
-            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.SetCursorPosition(22, 11);
             Console.WriteLine("내가 숨긴 구슬 갯수");
             Console.SetCursorPosition(28, 12);
@@ -267,7 +267,7 @@ namespace Squid_Game
             // 3,2,1 딜레이
             for (int i = 3; i > 0; i--)
             {
-                Thread.Sleep(1000);
+                Thread.Sleep(250);
                 Console.SetCursorPosition(90, 7);
                 Console.Write("{0}", i);
             }
@@ -361,7 +361,8 @@ namespace Squid_Game
             }
 
             // 상대방이 홀/짝 중에 어떤 것을 선택했는지 출력
-            Console.SetCursorPosition(76, 12);
+            Clear_Message();
+            Console.SetCursorPosition(76, 8);
             Console.WriteLine("상대방은 [{0}] 을 선택했습니다.", ptr_Odd_Even_);
             
             // 상대방이 내가 숨긴 구슬의 홀짝을 맞춘다면
@@ -379,7 +380,7 @@ namespace Squid_Game
             if(enemy_OddEven == check_HideBead_OddEven_)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.SetCursorPosition(66, 14);
+                Console.SetCursorPosition(66, 10);
                 Console.WriteLine("상대방이 정답을 맞췄습니다. 숨긴 구슬을 빼앗깁니다.");
                 Console.ResetColor();
 
@@ -389,7 +390,7 @@ namespace Squid_Game
             else
             {
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.SetCursorPosition(66, 14);
+                Console.SetCursorPosition(66, 10);
                 Console.WriteLine("상대방이 정답을 틀렸습니다. 숨긴 구슬을 되찾습니다.");
                 Console.ResetColor();
 
@@ -415,7 +416,8 @@ namespace Squid_Game
             }
 
             // 플레이어가 홀/짝 중에 어떤 것을 선택했는지 출력
-            Console.SetCursorPosition(78, 13);
+            Clear_Message();
+            Console.SetCursorPosition(78, 8);
             Console.WriteLine("당신은 [{0}] 을 선택했습니다.", ptr_Odd_Even_);
 
             // 플레이어가 상대방의 숨긴 구슬의 홀짝을 맞춘다면
@@ -429,7 +431,7 @@ namespace Squid_Game
                 check_HideBead_OddEven_ = 1;    // 상대방이 숨긴 구슬이 [홀]
             }
 
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.SetCursorPosition(20, 11);
             Console.WriteLine("상대가 숨긴 구슬 갯수");
             Console.SetCursorPosition(28, 12);
@@ -441,8 +443,8 @@ namespace Squid_Game
             if (player_OddEven == check_HideBead_OddEven_)
             {
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.SetCursorPosition(66, 14);
-                Console.WriteLine("당신은 정답을 맞췄습니다. 숨긴 구슬을 가져옵니다.");
+                Console.SetCursorPosition(66, 10);
+                Console.WriteLine("당신이 정답을 맞췄습니다. 숨긴 구슬을 가져옵니다.");
                 Console.ResetColor();
 
                 player_bead = player_bead + temp_bead;
@@ -451,7 +453,7 @@ namespace Squid_Game
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.SetCursorPosition(66, 14);
+                Console.SetCursorPosition(66, 10);
                 Console.WriteLine("당신은 정답을 틀렸습니다. 숨긴 구슬을 돌려줍니다.");
                 Console.ResetColor();
 
@@ -539,7 +541,7 @@ namespace Squid_Game
             // 3,2,1 딜레이
             for (int i = 3; i > 0; i--)
             {
-                Thread.Sleep(1000);
+                Thread.Sleep(250);
                 Console.SetCursorPosition(90, 7);
                 Console.Write("{0}", i);
             }
@@ -604,6 +606,7 @@ namespace Squid_Game
             }
 
             // 플레이어가 홀/짝 중에 어떤 것을 선택했는지 출력
+            Clear_Message();
             Console.SetCursorPosition(78, 13);
             Console.WriteLine("당신은 [{0}] 을 선택했습니다.", ptr_Odd_Even_);
 
@@ -618,7 +621,7 @@ namespace Squid_Game
                 check_HideBead_OddEven_ = 1;    // 상대방이 숨긴 구슬이 [홀]
             }
 
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.SetCursorPosition(20, 11);
             Console.WriteLine("상대가 숨긴 구슬 갯수");
             Console.SetCursorPosition(28, 12);
@@ -629,7 +632,6 @@ namespace Squid_Game
             // 플레이어이 정답을 맞춘다면? 숨긴 구슬을 플레이어에게 지급
             if (int_decide_Num_ == check_HideBead_OddEven_)
             {
-                Clear_Message();
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.SetCursorPosition(80, 14);
                 Console.WriteLine("당신은 정답을 맞췄습니다.");
@@ -640,7 +642,6 @@ namespace Squid_Game
             // 틀린다면 상대방에게 지급
             else
             {
-                Clear_Message();
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.SetCursorPosition(80, 14);
                 Console.WriteLine("당신은 정답을 틀렸습니다.");

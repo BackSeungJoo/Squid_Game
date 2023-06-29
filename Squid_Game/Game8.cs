@@ -293,6 +293,7 @@ namespace Squid_Game
                 // 엔딩 후 분기 선택
                 while (true)
                 {
+                    Console.SetCursorPosition(85, 22);
                     string select_Num_ = Console.ReadLine();
 
                     if (int.TryParse(select_Num_, out int selectedNumber) && 1 <= selectedNumber && selectedNumber <= 3)
@@ -323,7 +324,8 @@ namespace Squid_Game
                                 text_PosY++;
                                 Console.WriteLine();
                             }
-                            Console.WriteLine("아무키를 눌러 메인 대기실로 돌아가세요.");
+                            Console.SetCursorPosition(60, 22);
+                            Console.WriteLine("▼ 아무키나 눌러 다음으로 넘어가세요.");
                             Console.ReadKey();
                             Console.Clear();
                             is_Game = false;
@@ -356,7 +358,8 @@ namespace Squid_Game
                                 text_PosY++;
                                 Console.WriteLine();
                             }
-                            Console.WriteLine("아무키를 눌러 메인 대기실로 돌아가세요.");
+                            Console.SetCursorPosition(60, 22);
+                            Console.WriteLine("▼ 아무키나 눌러 다음으로 넘어가세요.");
                             Console.ReadKey();
                             Console.Clear();
                             player_Win_Count++;
@@ -389,7 +392,8 @@ namespace Squid_Game
                                 text_PosY++;
                                 Console.WriteLine();
                             }
-                            Console.WriteLine("아무키를 눌러 메인 대기실로 돌아가세요.");
+                            Console.SetCursorPosition(60, 22);
+                            Console.WriteLine("▼ 아무키나 눌러 다음으로 넘어가세요.");
                             Console.ReadKey();
                             Console.Clear();
                             player_Win_Count++;

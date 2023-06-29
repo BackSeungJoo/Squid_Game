@@ -77,10 +77,14 @@ namespace Squid_Game
                 if(moveCount >= 100)
                 {
                     Console.Clear();
+                    Print_Map(map, mapSize);
                     player_Win_Count = 1;
                     Console.ForegroundColor = ConsoleColor.Green;
+                    Console.SetCursorPosition(60, 5);
                     Console.WriteLine("적에게 붙잡히지 않고 끝까지 생존했습니다!");
+                    Console.SetCursorPosition(64, 7);
                     Console.WriteLine("축하합니다. 4 라운드 클리어입니다.\n");
+                    Console.SetCursorPosition(60, 12);
                     Console.WriteLine("아무키나 눌러 메인 대기실로 돌아가세요.");
                     Console.ResetColor();
                     Console.ReadKey();

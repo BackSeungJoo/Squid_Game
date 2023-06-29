@@ -32,6 +32,7 @@ namespace Squid_Game
             ConsoleKey select_Game = default;
             bool isgame = true;
             // 승리 라운드 체크
+            int round_Of_Game = 0;
             int roundWin = 0;
             int player_Win_Count = 0;
             int enemy_Win_Count = 0;
@@ -49,6 +50,32 @@ namespace Squid_Game
                 // 메인씬 출력
                 Console.SetCursorPosition(0, 0);
                 Print_Map(ref roundWin_List, sceneEndLine_Y, sceneEndLine_X, sceneArray, roundWin);
+                Console.SetCursorPosition(14, 19);
+                Console.WriteLine("{0} 회차",round_Of_Game);
+
+                // 게임 종류 텍스트 출력
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.SetCursorPosition(42, 7);
+                Console.WriteLine("1번 게임");
+                Console.SetCursorPosition(56, 7);
+                Console.WriteLine("2번 게임");
+                Console.SetCursorPosition(70, 7);
+                Console.WriteLine("3번 게임");
+                Console.SetCursorPosition(84, 7);
+                Console.WriteLine("4번 게임");
+                Console.SetCursorPosition(42, 15);
+                Console.WriteLine("5번 게임");
+                Console.SetCursorPosition(56, 15);
+                Console.WriteLine("6번 게임");
+                Console.SetCursorPosition(70, 15);
+                Console.WriteLine("7번 게임");
+                Console.SetCursorPosition(84, 15);
+                Console.WriteLine("8번 게임");
+                Console.ResetColor();
+                    // 텍스트 출력 end
+
+
+                // 게임 시작
                 isgame = true;
 
                 // 1 ~ 8 까지의 숫자를 누르면 해당 게임으로 넘어가기
@@ -372,17 +399,27 @@ namespace Squid_Game
                     else { /*pass*/ }
                     #endregion
                 }
+
+                // 게임 회차 증가
+                if(roundWin_List.Count >= 8)
+                {
+                    roundWin_List.Clear();  // 라운드 리스트 초기화
+                    round_Of_Game++;        // 게임 회차 증가
+                }
             }
         }
 
         // 아무키나 눌러 메인씬으로 이동합니다.
         public static void PressAnyKeytoStart()
         {
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.SetCursorPosition(40, 22);
             Console.WriteLine("PRESS ANY KEY TO START ... ");
+            Console.ResetColor();
             Console.ReadKey();
         }
 
+        // 메인 씬 출력
         public static void Ptr_MainScene(ref List<int> roundWin_List, ref string[,] sceneArray, ref string sceneLine, ref int sceneEndLine_Y, ref int sceneEndLine_X, ref int roundWin)
         {
             // { 맵 출력
@@ -437,7 +474,7 @@ namespace Squid_Game
                     // 맵 테두리 세팅
                     if ((y == 0) || (x == 0) || (y == sceneEndLine_Y - 1) || (x == sceneEndLine_X - 1) || (x == 17))
                     {
-                        sceneArray[y, x] = sceneLine;
+                        sceneArray[y, x] = "□";
                         continue;
                     }
                     else
@@ -764,6 +801,16 @@ namespace Squid_Game
                             continue;
                         }
 
+
+                        // 벽 출력
+                        if(sceneArray[y, x] == "□")
+                        {
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            Console.Write(sceneArray[y, x]);
+                            Console.ResetColor();
+                            continue;
+                        }
+
                         Console.Write(sceneArray[y, x]);
 
                     }
@@ -771,6 +818,15 @@ namespace Squid_Game
                     // 리스트가 비어있다면 그냥 출력
                     else
                     {
+                        // 벽 출력
+                        if (sceneArray[y, x] == "□")
+                        {
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            Console.Write(sceneArray[y, x]);
+                            Console.ResetColor();
+                            continue;
+                        }
+
                         Console.Write(sceneArray[y, x]);
                     }
                     

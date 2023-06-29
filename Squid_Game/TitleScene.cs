@@ -31,28 +31,29 @@ namespace Squid_Game
                 }
             }
 
-            // 맵 출력
-            for (int y = 0; y < titleEndLine_Y; y++)
-            {
-                for (int x = 0; x < titleEndLine_X; x++)
-                {
-                    // 벽 셋팅
-                    if (titleArray[y, x] == "■")
-                    {
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write(titleArray[y, x]);
-                        Console.ResetColor();
-                        continue;
-                    }
+            //// 맵 출력
+            //for (int y = 0; y < titleEndLine_Y; y++)
+            //{
+            //    for (int x = 0; x < titleEndLine_X; x++)
+            //    {
+            //        // 벽 셋팅
+            //        if (titleArray[y, x] == "■")
+            //        {
+            //            Console.ForegroundColor = ConsoleColor.Magenta;
+            //            Console.Write(titleArray[y, x]);
+            //            Console.ResetColor();
+            //            continue;
+            //        }
 
-                    Console.Write(titleArray[y, x]);
-                }
-                Console.WriteLine();
-            }
+            //        Console.Write(titleArray[y, x]);
+            //    }
+            //    Console.WriteLine();
+            //}
 
             //맵 제목 출력
 
             Console.OutputEncoding = Encoding.UTF8;
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.SetCursorPosition(2, 2);
             Console.WriteLine("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");
             Console.SetCursorPosition(2, 3);
@@ -83,10 +84,7 @@ namespace Squid_Game
             Console.WriteLine("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⣶⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⢸⣿⣿⣿");
             Console.SetCursorPosition(2, 16);
             Console.WriteLine("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");
-
-
-
-
+            Console.ResetColor();
         }
         
     }

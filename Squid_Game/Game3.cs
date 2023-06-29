@@ -40,15 +40,14 @@ namespace Squid_Game
                 // 맵 출력
                 Console.SetCursorPosition(0, 0);
                 Print_Map_Game3(game2_map, mapSize_Game3);
-                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.SetCursorPosition(45, 1);
                 Console.WriteLine("      달고나 게임에 오신 것을 환영합니다.");
                 Console.SetCursorPosition(45, 3);
                 Console.WriteLine("[W A S D] 를 이용해 모든 발판을 활성화 시키면 승리");
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.SetCursorPosition(45, 6);
+                Console.SetCursorPosition(48, 8);
                 Console.WriteLine("이동 횟수 [{0}] 안에 달고나를 완성하세요.", loseCount);
-                Console.SetCursorPosition(45, 7);
+                Console.SetCursorPosition(60, 10);
                 Console.WriteLine("현재 이동 횟수 [{0}]", moveCount);
                 Console.ResetColor();
 
@@ -166,7 +165,9 @@ namespace Squid_Game
                     // 벽 생성
                     if (game2_map[y, x] == "■")
                     {
+                        Console.ForegroundColor = ConsoleColor.Magenta;
                         Console.Write(game2_map[y, x]);
+                        Console.ResetColor();
                         continue;
                     }
 

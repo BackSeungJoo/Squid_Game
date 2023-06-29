@@ -791,7 +791,7 @@ namespace Squid_Game
                 Console.SetCursorPosition(70, 5);
                 Console.WriteLine("탈 락 입 니 다 !!");
                 Console.SetCursorPosition(70, 7);
-                Console.WriteLine("3번 떨어졌습니다.");
+                Console.WriteLine("4번 떨어졌습니다.");
                 Console.SetCursorPosition(60, 9);
                 Console.WriteLine("아무 키를 눌러 메인대기실로 돌아가세요...");
                 Console.SetCursorPosition(76, 10);

@@ -36,14 +36,14 @@ namespace Squid_Game
             while (true)
             {
                 // 맵 출력
-                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.SetCursorPosition(20, 1);
                 Console.WriteLine("X를 눌러 딱지를 치세요!");
+                Console.ResetColor();
                 Console.SetCursorPosition(12, 2);
                 Console.WriteLine("더 높은 수가 나온 참가자가 승리합니다.");
                 Console.SetCursorPosition(12, 3);
                 Console.WriteLine("5번을 먼저 이긴 참가자가 최종 승리합니다.");
-                Console.ResetColor();
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.SetCursorPosition(0, 5);
                 Console.WriteLine("플레이어가 이긴 횟수 [{0}]\t    [{1}] 상대방이 이긴 횟수", player_Win_Count, enemy_Win_Count);
@@ -58,7 +58,9 @@ namespace Squid_Game
                     {
                         Console.Clear();
                         Console.ForegroundColor = ConsoleColor.Green;
+                        Console.SetCursorPosition(10, 12);
                         Console.WriteLine("당신의 최종 승리입니다. 1 라운드 클리어!!");
+                        Console.SetCursorPosition(10, 14);
                         Console.WriteLine("아무키나 눌러 메인 대기실로 돌아갑니다.");
                         Console.ReadKey();
                         Console.ResetColor();
@@ -68,7 +70,9 @@ namespace Squid_Game
                     {
                         Console.Clear();
                         Console.ForegroundColor = ConsoleColor.Red;
+                        Console.SetCursorPosition(10, 12);
                         Console.WriteLine("당신의 최종 패배입니다. 1 라운드 실패!!");
+                        Console.SetCursorPosition(10, 14);
                         Console.WriteLine("아무키나 눌러 메인 대기실로 돌아갑니다.");
                         Console.ReadKey();
                         Console.ResetColor();
@@ -163,6 +167,15 @@ namespace Squid_Game
             {
                 for (int x = 0; x < sceneEndLine_X; x++)
                 {
+                    // 벽 색상 변경
+                    if ((y == 0) || (x == 0) || (y == sceneEndLine_Y - 1) || (x == sceneEndLine_X - 1))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.Write(game1_Map[y, x]);
+                        Console.ResetColor();
+                        continue;
+                    }
+
                     // 참가자 딱지 색상 변경
                     if (((4 <= y) && (y <= 9)) && ((5 <= x) && (x <= 10)))
                     {
@@ -260,8 +273,11 @@ namespace Squid_Game
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;
+            Console.SetCursorPosition(26,10);
             Console.WriteLine("짝!!!");
+            Console.SetCursorPosition(10, 12);
             Console.WriteLine("당신은 상대방의 뺨을 있는 힘껏 때렸습니다.\n\n");
+            Console.SetCursorPosition(15, 14);
             Console.WriteLine("아무 키나 눌러 다시 딱지를 치세요.");
             Console.ResetColor();
             Console.ReadKey();
@@ -273,8 +289,11 @@ namespace Squid_Game
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
+            Console.SetCursorPosition(26, 10);
             Console.WriteLine("짝!!!");
+            Console.SetCursorPosition(10, 12);
             Console.WriteLine("상대방은 당신의 뺨을 있는 힘껏 때렸습니다.\n\n");
+            Console.SetCursorPosition(15, 14);
             Console.WriteLine("아무 키나 눌러 다시 딱지를 치세요.");
             Console.ResetColor();
             Console.ReadKey();
