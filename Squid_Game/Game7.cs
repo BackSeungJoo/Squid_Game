@@ -8,7 +8,7 @@ namespace Squid_Game
 {
     public class Game7
     {
-        public void PlayGame_7()    // 징검다리 건너기
+        public bool PlayGame_7(ref int player_Win_Count)    // 징검다리 건너기
         {
             Console.Clear();
             // { 변수 선언
@@ -25,6 +25,9 @@ namespace Squid_Game
             int glass_Count = 7;    // 유리 라인의 총 갯수
             List<int> glass_Up = new List<int>(glass_Count);   // 위 유리     (7개의 숫자를 넣어줍니다. 0 과 1 둘 중에 하나)
             List<int> glass_Down = new List<int>(glass_Count); // 아래 유리
+
+            // 유리 판별 실패 횟수
+            int glass_Check_False = 0;
 
             // 게임 종료 변수
             bool is_Game = true;
@@ -69,14 +72,20 @@ namespace Squid_Game
             while(is_Game)
             {
                 // 맵 출력
+                Console.CursorVisible = false;
                 Console.SetCursorPosition(0, 0);
                 Print_Map_Game6(game_Map7, sceneEndLine_Y, sceneEndLine_X);
+                Rule_Text(glass_Check_False);
 
                 // 플레이어 액션
-                Player_Action(ref game_Map7, ref player_PosY, ref player_PosX, glass_Up, glass_Down, sceneEndLine_Y, sceneEndLine_X);
+                Player_Action(ref game_Map7, ref player_PosY, ref player_PosX, glass_Up, glass_Down, sceneEndLine_Y, sceneEndLine_X, ref glass_Check_False);
+
+                // 승리 실패 판별
+                Win_Lose(ref is_Game, ref player_Win_Count, player_PosX, glass_Check_False);
             }
 
-            
+            Console.Clear();
+            return false;
         }
 
         // 맵 세팅
@@ -190,11 +199,34 @@ namespace Squid_Game
             {
                 for (int x = 0; x < sceneEndLine_X; x++)
                 {
+                    // 벽 색상 변경
                     if (game_Map7[y, x] == "■")
                     {
+                        // 골라인 색상 변경
+                        if ((3 <= y) && (y <= 10) && (x == 21))
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write(game_Map7[y, x]);
+                            Console.ResetColor();
+                            continue;
+                        }
+
+                        Console.ForegroundColor = ConsoleColor.White;
                         Console.Write(game_Map7[y, x]);
+                        Console.ResetColor();
                         continue;
                     }
+
+                    // 플레이어 색상 변경
+                    if (game_Map7[y, x] == "◎")
+                    {
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.Write(game_Map7[y, x]);
+                        Console.ResetColor();
+                        continue;
+                    }
+
+                    
 
                     Console.Write(game_Map7[y, x]);
                 }
@@ -203,7 +235,7 @@ namespace Squid_Game
         }
 
         // 플레이어 액션
-        public void Player_Action(ref string[,] game_Map7, ref int player_PosY, ref int player_PosX, List<int> glass_Up, List<int> glass_Down, int sceneEndLine_Y, int sceneEndLine_X)
+        public void Player_Action(ref string[,] game_Map7, ref int player_PosY, ref int player_PosX, List<int> glass_Up, List<int> glass_Down, int sceneEndLine_Y, int sceneEndLine_X, ref int glass_Check_False)
         {
             ConsoleKey user_Action = Console.ReadKey(true).Key;
 
@@ -260,6 +292,9 @@ namespace Squid_Game
 
                                 // 플레이어 모양 스왑 2
                                 game_Map7[player_PosY, player_PosX] = player_temp_;
+
+                                // 판별 실패 횟수 증가
+                                glass_Check_False++;
                             }
 
                             else if ((player_PosY == 6) && (glass_Up[0] == 1)) // 위고 넘버가 1일 경우
@@ -284,6 +319,9 @@ namespace Squid_Game
 
                                 // 플레이어 모양 스왑 2
                                 game_Map7[player_PosY, player_PosX] = player_temp_;
+
+                                // 판별 실패 횟수 증가
+                                glass_Check_False++;
                             }
 
                             else if ((player_PosY == 7) && (glass_Down[0] == 1)) // 아래고 넘버가 1일 경우
@@ -315,6 +353,9 @@ namespace Squid_Game
 
                                 // 플레이어 모양 스왑 2
                                 game_Map7[player_PosY, player_PosX] = player_temp_;
+
+                                // 판별 실패 횟수 증가
+                                glass_Check_False++;
                             }
 
                             else if ((player_PosY == 6) && (glass_Up[1] == 1)) // 위고 넘버가 1일 경우
@@ -339,6 +380,9 @@ namespace Squid_Game
 
                                 // 플레이어 모양 스왑 2
                                 game_Map7[player_PosY, player_PosX] = player_temp_;
+
+                                // 판별 실패 횟수 증가
+                                glass_Check_False++;
                             }
 
                             else if ((player_PosY == 7) && (glass_Down[1] == 1)) // 아래고 넘버가 1일 경우
@@ -370,6 +414,9 @@ namespace Squid_Game
 
                                 // 플레이어 모양 스왑 2
                                 game_Map7[player_PosY, player_PosX] = player_temp_;
+
+                                // 판별 실패 횟수 증가
+                                glass_Check_False++;
                             }
 
                             else if ((player_PosY == 6) && (glass_Up[2] == 1)) // 위고 넘버가 1일 경우
@@ -394,6 +441,9 @@ namespace Squid_Game
 
                                 // 플레이어 모양 스왑 2
                                 game_Map7[player_PosY, player_PosX] = player_temp_;
+
+                                // 판별 실패 횟수 증가
+                                glass_Check_False++;
                             }
 
                             else if ((player_PosY == 7) && (glass_Down[2] == 1)) // 아래고 넘버가 1일 경우
@@ -425,6 +475,9 @@ namespace Squid_Game
 
                                 // 플레이어 모양 스왑 2
                                 game_Map7[player_PosY, player_PosX] = player_temp_;
+
+                                // 판별 실패 횟수 증가
+                                glass_Check_False++;
                             }
 
                             else if ((player_PosY == 6) && (glass_Up[3] == 1)) // 위고 넘버가 1일 경우
@@ -449,6 +502,9 @@ namespace Squid_Game
 
                                 // 플레이어 모양 스왑 2
                                 game_Map7[player_PosY, player_PosX] = player_temp_;
+
+                                // 판별 실패 횟수 증가
+                                glass_Check_False++;
                             }
 
                             else if ((player_PosY == 7) && (glass_Down[3] == 1)) // 아래고 넘버가 1일 경우
@@ -480,6 +536,9 @@ namespace Squid_Game
 
                                 // 플레이어 모양 스왑 2
                                 game_Map7[player_PosY, player_PosX] = player_temp_;
+
+                                // 판별 실패 횟수 증가
+                                glass_Check_False++;
                             }
 
                             else if ((player_PosY == 6) && (glass_Up[4] == 1)) // 위고 넘버가 1일 경우
@@ -504,6 +563,9 @@ namespace Squid_Game
 
                                 // 플레이어 모양 스왑 2
                                 game_Map7[player_PosY, player_PosX] = player_temp_;
+
+                                // 판별 실패 횟수 증가
+                                glass_Check_False++;
                             }
 
                             else if ((player_PosY == 7) && (glass_Down[4] == 1)) // 아래고 넘버가 1일 경우
@@ -535,6 +597,9 @@ namespace Squid_Game
 
                                 // 플레이어 모양 스왑 2
                                 game_Map7[player_PosY, player_PosX] = player_temp_;
+
+                                // 판별 실패 횟수 증가
+                                glass_Check_False++;
                             }
 
                             else if ((player_PosY == 6) && (glass_Up[5] == 1)) // 위고 넘버가 1일 경우
@@ -559,6 +624,9 @@ namespace Squid_Game
 
                                 // 플레이어 모양 스왑 2
                                 game_Map7[player_PosY, player_PosX] = player_temp_;
+
+                                // 판별 실패 횟수 증가
+                                glass_Check_False++;
                             }
 
                             else if ((player_PosY == 7) && (glass_Down[5] == 1)) // 아래고 넘버가 1일 경우
@@ -590,6 +658,9 @@ namespace Squid_Game
 
                                 // 플레이어 모양 스왑 2
                                 game_Map7[player_PosY, player_PosX] = player_temp_;
+
+                                // 판별 실패 횟수 증가
+                                glass_Check_False++;
                             }
 
                             else if ((player_PosY == 6) && (glass_Up[6] == 1)) // 위고 넘버가 1일 경우
@@ -614,6 +685,9 @@ namespace Squid_Game
 
                                 // 플레이어 모양 스왑 2
                                 game_Map7[player_PosY, player_PosX] = player_temp_;
+
+                                // 판별 실패 횟수 증가
+                                glass_Check_False++;
                             }
 
                             else if ((player_PosY == 7) && (glass_Down[6] == 1)) // 아래고 넘버가 1일 경우
@@ -637,7 +711,7 @@ namespace Squid_Game
             else if (user_Action == ConsoleKey.W)
             {
                 // 공백이 있으면 못가게
-                if (game_Map7[player_PosY - 1, player_PosX] == "　")
+                if ((game_Map7[player_PosY - 1, player_PosX] == "　") || (game_Map7[player_PosY - 1, player_PosX] == "□"))
                 {
                     /* pass */
                 }
@@ -653,7 +727,7 @@ namespace Squid_Game
             else if (user_Action == ConsoleKey.S)
             {
                 // 공백이 있으면 못가게
-                if (game_Map7[player_PosY + 1, player_PosX] == "　")
+                if ((game_Map7[player_PosY + 1, player_PosX] == "　") || (game_Map7[player_PosY + 1, player_PosX] == "□"))
                 {
                     /* pass */
                 }
@@ -702,6 +776,84 @@ namespace Squid_Game
             game_Map7[player_PosY + 1, player_PosX] = temp_;
             player_PosY++;
 
+        }
+
+        // 승리 패배 판별
+        public void Win_Lose(ref bool is_Game, ref int player_Win_Count, int player_PosX, int glass_Check_False)
+        {
+            // 패배
+            if(glass_Check_False >= 3)
+            {
+                Clear_Text();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.SetCursorPosition(70, 5);
+                Console.WriteLine("탈 락 입 니 다 !!");
+                Console.SetCursorPosition(70, 7);
+                Console.WriteLine("3번 떨어졌습니다.");
+                Console.SetCursorPosition(60, 9);
+                Console.WriteLine("아무 키를 눌러 메인대기실로 돌아가세요...");
+                Console.SetCursorPosition(76, 10);
+                Console.ResetColor();
+                Console.ReadKey();
+                Console.ReadKey();
+                is_Game = false;
+            }
+            
+
+            // 승리
+            if(player_PosX >= 21)
+            {
+                Clear_Text();
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.SetCursorPosition(70, 5);
+                Console.WriteLine("성 공 입 니 다 !!");
+                Console.SetCursorPosition(66, 7);
+                Console.WriteLine("징검다리를 끝까지 건넜습니다!");
+                Console.SetCursorPosition(60, 9);
+                Console.WriteLine("아무 키를 눌러 메인대기실로 돌아가세요...");
+                Console.SetCursorPosition(76, 10);
+                Console.ReadKey();
+                Console.ReadKey();
+                is_Game = false;
+                player_Win_Count = 1;
+            }
+        }
+
+        // 규칙 텍스트 출력
+        public void Rule_Text(int glass_Check_False)
+        {
+            Console.SetCursorPosition(58, 0);
+            Console.WriteLine("징검다리 건너기");
+            Console.SetCursorPosition(58, 3);
+            Console.WriteLine("< 규칙 >");
+            Console.SetCursorPosition(58, 4);
+            Console.WriteLine("일반유리를 피해 강화유리를 밟고 끝까지 건너가세요");
+            Console.SetCursorPosition(58, 5);
+            Console.WriteLine("3번 떨어지면 라운드 탈락입니다.");
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.SetCursorPosition(58, 8);
+            Console.WriteLine("이동 키 ");
+            Console.SetCursorPosition(58, 9);
+            Console.WriteLine("[D : 앞] [W : 위] [S : 아래]");
+            Console.SetCursorPosition(58, 10);
+            Console.WriteLine("뒤로 가는 키는 없습니다.");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.SetCursorPosition(58, 13);
+            Console.WriteLine("떨어진 횟수 [{0}]", glass_Check_False);
+            Console.ResetColor();
+        }
+
+        // 텍스트 문구 지우기
+        public void Clear_Text()
+        {
+            for (int i = 3; i < 14; i++)
+            {
+                Console.SetCursorPosition(58, i);
+                Console.WriteLine("                                                    ");
+            }
         }
     }
 }

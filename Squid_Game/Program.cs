@@ -32,7 +32,7 @@ namespace Squid_Game
             ConsoleKey select_Game = default;
             bool isgame = true;
             // 승리 라운드 체크
-            int roundWin = 5;       
+            int roundWin = 6;       
             int player_Win_Count = 0;
             int enemy_Win_Count = 0;
                 // 변수 선언 end
@@ -165,7 +165,19 @@ namespace Squid_Game
 
                     else if (select_Game == ConsoleKey.D7)
                     {
-                        game7.PlayGame_7();
+                        game7.PlayGame_7(ref player_Win_Count);
+                        isgame = false;
+
+                        if (roundWin == 6)
+                        {
+                            if (player_Win_Count == 1)
+                            {
+                                roundWin = 7;
+                                player_Win_Count = 0;
+                            }
+                            else { /*pass*/ }
+                        }
+                        else { /*pass*/ }
                     }
 
                     else if (select_Game == ConsoleKey.D8)
@@ -734,6 +746,79 @@ namespace Squid_Game
                             continue;
                         }
                     }
+
+                    // 7라운드 클리어
+                    if (roundWin == 7)
+                    {
+                        if ((8 == x) && (y == 18))
+                        {
+                            sceneArray[y, x] = roundWin.ToString() + " ";
+                        }
+
+                        // 게임 종류 출력 (1번 게임)
+                        if (((8 <= y) && (y <= 13)) && ((20 <= x) && (x <= 25)))
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write(sceneArray[y, x]);
+                            Console.ResetColor();
+                            continue;
+                        }
+
+                        // 게임 종류 출력 (2번 게임)
+                        if (((8 <= y) && (y <= 13)) && ((27 <= x) && (x <= 32)))
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write(sceneArray[y, x]);
+                            Console.ResetColor();
+                            continue;
+                        }
+
+                        // 게임 종류 출력 (3번 게임)
+                        if (((8 <= y) && (y <= 13)) && ((34 <= x) && (x <= 39)))
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write(sceneArray[y, x]);
+                            Console.ResetColor();
+                            continue;
+                        }
+
+                        // 게임 종류 출력 (4번 게임)
+                        if (((8 <= y) && (y <= 13)) && ((41 <= x) && (x <= 46)))
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write(sceneArray[y, x]);
+                            Console.ResetColor();
+                            continue;
+                        }
+
+                        // 게임 종류 출력 (5번 게임)
+                        if (((16 <= y) && (y <= 21)) && ((20 <= x) && (x <= 25)))
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write(sceneArray[y, x]);
+                            Console.ResetColor();
+                            continue;
+                        }
+
+                        // 게임 종류 출력 (6번 게임)
+                        if (((16 <= y) && (y <= 21)) && ((27 <= x) && (x <= 32)))
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write(sceneArray[y, x]);
+                            Console.ResetColor();
+                            continue;
+                        }
+
+                        // 게임 종류 출력 (7번 게임)
+                        if (((16 <= y) && (y <= 21)) && ((34 <= x) && (x <= 39)))
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write(sceneArray[y, x]);
+                            Console.ResetColor();
+                            continue;
+                        }
+                    }
+
                     Console.Write(sceneArray[y, x]);
                 }
                 Console.WriteLine();

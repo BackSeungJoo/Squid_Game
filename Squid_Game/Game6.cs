@@ -32,7 +32,7 @@ namespace Squid_Game
             int enemy_OddEven = default;  // 상대방의 홀짝을 체크
 
             // 턴 횟수
-            int turn_Count = 6;
+            int turn_Count = 0;
 
             // 게임 종료 변수
             bool is_game = true;
