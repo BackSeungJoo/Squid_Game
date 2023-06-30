@@ -234,7 +234,9 @@ namespace Squid_Game
                             Console.WriteLine("1");
                         }
                         // 조건 2.내 뒤에 체크된게 있고 내 앞에 체크된게 없을 때
-                        else if (((game2_map[player_PosY, player_PosX + 1] == "▣") || (game2_map[player_PosY, player_PosX + 1] == "□")) && (game2_map[player_PosY, player_PosX - 1] == "　"))
+                        else if (((game2_map[player_PosY, player_PosX + 1] == "▣") || 
+                            (game2_map[player_PosY, player_PosX + 1] == "□")) && 
+                            (game2_map[player_PosY, player_PosX - 1] == "　"))
                         {
                             // 스왑하고 내 뒤에있는 걸로 내가 빠져나온 공간을 채워넣음
                             tempShape = game2_map[player_PosY, player_PosX + 1];
@@ -244,7 +246,9 @@ namespace Squid_Game
                             Console.WriteLine("2");
                         }
                         // 조건 3.내 뒤에 체크된게 없고 내 앞에 체크된게 있을 때
-                        else if ((game2_map[player_PosY, player_PosX + 1] == "　") && ((game2_map[player_PosY, player_PosX - 1] == "▣") || (game2_map[player_PosY, player_PosX - 1] == "□")))
+                        else if ((game2_map[player_PosY, player_PosX + 1] == "　") && 
+                            ((game2_map[player_PosY, player_PosX - 1] == "▣") || 
+                            (game2_map[player_PosY, player_PosX - 1] == "□")))
                         {
                             // 스왑하고 뒤에 있는거 삭제
                             Swap_Move_A(ref game2_map, ref player_PosY, ref player_PosX);
@@ -274,7 +278,9 @@ namespace Squid_Game
                             Console.WriteLine("5");
                         }
                         // 조건 2.내 뒤에 체크된게 있고 내 앞에 체크된게 없을 때
-                        else if (((game2_map[player_PosY, player_PosX + 1] == "▣") || (game2_map[player_PosY, player_PosX + 1] == "□")) && (game2_map[player_PosY, player_PosX - 1] == "　"))
+                        else if (((game2_map[player_PosY, player_PosX + 1] == "▣") || 
+                            (game2_map[player_PosY, player_PosX + 1] == "□")) && 
+                            (game2_map[player_PosY, player_PosX - 1] == "　"))
                         {
                             // 스왑하고 내 뒤에있는 걸로 내가 빠져나온 공간을 채워넣음
                             Swap_Move_A(ref game2_map, ref player_PosY, ref player_PosX);
@@ -282,7 +288,9 @@ namespace Squid_Game
                             Console.WriteLine("6");
                         }
                         // 조건 3.내 뒤에 체크된게 없고 내 앞에 체크된게 있을 때
-                        else if ((game2_map[player_PosY, player_PosX + 1] == "　") && ((game2_map[player_PosY, player_PosX - 1] == "▣") || (game2_map[player_PosY, player_PosX - 1] == "□")))
+                        else if ((game2_map[player_PosY, player_PosX + 1] == "　") && 
+                            ((game2_map[player_PosY, player_PosX - 1] == "▣") || 
+                            (game2_map[player_PosY, player_PosX - 1] == "□")))
                         {
                             // 스왑하고 뒤에 있는거 삭제
                             Swap_Move_A(ref game2_map, ref player_PosY, ref player_PosX);

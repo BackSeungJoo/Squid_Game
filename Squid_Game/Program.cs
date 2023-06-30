@@ -39,6 +39,13 @@ namespace Squid_Game
             List<int> roundWin_List = new List<int>();
             // 변수 선언 end
 
+            // 라운드 회차 디버그
+            //for (int i = 0; i <= 8; i++)
+            //{
+            //    roundWin_List.Add(i);
+            //}
+            
+
             // 타이틀씬 출력
             Console.CursorVisible = false;
             titleScene.Print_TitleScene();
@@ -83,6 +90,7 @@ namespace Squid_Game
                 {
                     select_Game = Console.ReadKey(true).Key;
 
+                    // 입력받아서 게임 시작
                     #region
                     // 게임 1. 딱지치기 시작
                     if (select_Game == ConsoleKey.D1)
@@ -118,7 +126,7 @@ namespace Squid_Game
                             }
 
                         }
-                        else { /*pass*/}
+                        else { /*pass*/ player_Win_Count = 0; }
                         isgame = false;
                     }
 
@@ -156,7 +164,7 @@ namespace Squid_Game
                             }
 
                         }
-                        else { /*pass*/}
+                        else { /*pass*/ player_Win_Count = 0; }
 
                         isgame = false;
                     }
@@ -195,7 +203,7 @@ namespace Squid_Game
                             }
 
                         }
-                        else { /*pass*/}
+                        else { /*pass*/ player_Win_Count = 0; }
 
                         isgame = false;
                     }
@@ -234,7 +242,7 @@ namespace Squid_Game
                             }
 
                         }
-                        else { /*pass*/}
+                        else { /*pass*/ player_Win_Count = 0; }
 
                         isgame = false;
                     }
@@ -273,7 +281,7 @@ namespace Squid_Game
                             }
 
                         }
-                        else { /*pass*/}
+                        else { /*pass*/ player_Win_Count = 0; }
 
                         isgame = false;
 
@@ -313,7 +321,7 @@ namespace Squid_Game
                             }
 
                         }
-                        else { /*pass*/}
+                        else { /*pass*/ player_Win_Count = 0; }
 
                         isgame = false;
                     }
@@ -352,7 +360,7 @@ namespace Squid_Game
                             }
 
                         }
-                        else { /*pass*/}
+                        else { /*pass*/ player_Win_Count = 0; }
 
                         isgame = false;
                     }
@@ -391,7 +399,7 @@ namespace Squid_Game
                             }
 
                         }
-                        else { /*pass*/}
+                        else { /*pass*/ player_Win_Count = 0; }
 
                         isgame = false;
                     }
