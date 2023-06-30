@@ -55,22 +55,22 @@ namespace Squid_Game
 
                 // 게임 종류 텍스트 출력
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.SetCursorPosition(42, 7);
-                Console.WriteLine("1번 게임");
-                Console.SetCursorPosition(56, 7);
-                Console.WriteLine("2번 게임");
-                Console.SetCursorPosition(70, 7);
-                Console.WriteLine("3번 게임");
-                Console.SetCursorPosition(84, 7);
-                Console.WriteLine("4번 게임");
-                Console.SetCursorPosition(42, 15);
-                Console.WriteLine("5번 게임");
-                Console.SetCursorPosition(56, 15);
-                Console.WriteLine("6번 게임");
-                Console.SetCursorPosition(70, 15);
-                Console.WriteLine("7번 게임");
-                Console.SetCursorPosition(84, 15);
-                Console.WriteLine("8번 게임");
+                Console.SetCursorPosition(40, 7);
+                Console.WriteLine("1.딱지치기");
+                Console.SetCursorPosition(54, 7);
+                Console.WriteLine("2.무궁화 꽃");
+                Console.SetCursorPosition(68, 7);
+                Console.WriteLine("3.달고나뽑기");
+                Console.SetCursorPosition(82, 7);
+                Console.WriteLine("4.생존하기");
+                Console.SetCursorPosition(40, 15);
+                Console.WriteLine("5.줄다리기");
+                Console.SetCursorPosition(54, 15);
+                Console.WriteLine("6.구슬홀짝");
+                Console.SetCursorPosition(68, 15);
+                Console.WriteLine("7.징검다리");
+                Console.SetCursorPosition(82, 15);
+                Console.WriteLine("8.오징어게임");
                 Console.ResetColor();
                     // 텍스트 출력 end
 
