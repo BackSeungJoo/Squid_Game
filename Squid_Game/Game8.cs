@@ -405,7 +405,7 @@ namespace Squid_Game
                     // 다른 입력값이라면
                     else
                     {
-                        Console.SetCursorPosition(60, 22);
+                        Console.SetCursorPosition(40, 21);
                         Console.WriteLine("잘못 입력하셨습니다. [1, 2, 3] 숫자 중 하나를 입력하세요");
                     }
                 }

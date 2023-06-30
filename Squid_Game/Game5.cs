@@ -71,10 +71,10 @@ namespace Squid_Game
                 Console.WriteLine("이곳에 문자가 나타납니다. [숫자1]");
                 Console.SetCursorPosition(10, 15);
                 Console.ForegroundColor= ConsoleColor.Red;
-                Console.Write("틀린 횟수 : {0}", wrong_Count);
+                Console.Write("틀린 횟수 : {0:D2}", wrong_Count);
                 Console.SetCursorPosition(31, 15);
                 Console.ForegroundColor= ConsoleColor.Green;
-                Console.Write("{0} : 맞춘 횟수      ", correct_Count);
+                Console.Write("{0:D2} : 맞춘 횟수      ", correct_Count);
                 Console.ResetColor();
                 Console.SetCursorPosition(0, 0);
 
@@ -86,10 +86,7 @@ namespace Squid_Game
                 // 승리
                 if(end_Count >= 14)
                 {
-                    // 맵 출력
-                    Console.SetCursorPosition(0, 2);
-                    Print_Map_Game5(game_Map5, sceneEndLine_Y, sceneEndLine_X);
-
+                    // 맞춘 횟수 재 출력
                     Console.SetCursorPosition(31, 15);
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write("{0} : 맞춘 횟수      ", correct_Count);
@@ -124,10 +121,7 @@ namespace Squid_Game
                 // 패배
                 if(end_Count <= 6)
                 {
-                    // 맵 출력
-                    Console.SetCursorPosition(0, 2);
-                    Print_Map_Game5(game_Map5, sceneEndLine_Y, sceneEndLine_X);
-
+                    // 틀린 횟수 재 출력
                     Console.SetCursorPosition(10, 15);
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.Write("틀린 횟수 : {0}", wrong_Count);
@@ -395,6 +389,7 @@ namespace Squid_Game
                 {
                     Jump_rope_D(ref game_Map5, startY, startX, endY, endX);
                     endX++;
+                    startX++;
                     Console.SetCursorPosition(48, 22);
                     Console.WriteLine("정 답 입 니 다!");
                     Console.SetCursorPosition(42, 24);
@@ -409,6 +404,7 @@ namespace Squid_Game
                 else
                 {
                     Jump_rope_A(ref game_Map5, startY, startX, endY, endX);
+                    endX--;
                     startX--;
                     Console.SetCursorPosition(48, 22);
                     Console.WriteLine("오 답 입 니 다!");
